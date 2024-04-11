@@ -5,7 +5,7 @@
       <el-form-item label="旅行社名称">
         <el-input />
       </el-form-item>
-      <el-form-item label="导游姓名">
+      <el-form-item label="导游姓名1">
         <el-input />
       </el-form-item>
       <el-form-item label="导游身份证号">
