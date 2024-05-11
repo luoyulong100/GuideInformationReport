@@ -50,6 +50,7 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+// import { getAliOCR } from '@/api/ocr'
 
 //字段定义
 const form = ref({
@@ -152,14 +153,14 @@ const getBase64Image = (img) => {
 //ocr接口封装
 const getIdCard = (image) => {
   loading.value = true
-  const httpUrl = 'https://cardnumber.market.alicloudapi.com/rest/160601/ocr/ocr_idcard.json'
+  let httpUrl = 'https://cardnumber.market.alicloudapi.com/rest/160601/ocr/ocr_idcard.json'
   let data = {
     image: image
   }
   let config = {
     headers: {
-      'Authorization': 'APPCODE 84d2a551d3524506a4a5a417a82c13e4',
-      'Content-Type': 'application/json; charset=UTF-8'
+      Authorization: 'APPCODE 84d2a551d3524506a4a5a417a82c13e4',
+      'Content-Type': 'application/json;charset=UTF-8'
     }
   }
   axios.post(httpUrl, data, config).then((res) => {
