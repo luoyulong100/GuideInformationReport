@@ -28,6 +28,7 @@
         <el-form-item label="导游电话" prop="phone">
           <el-input placeholder="请输入导游电话" v-model="form.phone" />
         </el-form-item>
+        <TextEditor />
         <el-form-item>
           <el-button type="primary" @click="onSubmit">提交</el-button>
           <el-button @click="refreshIdApp">重置</el-button>
@@ -43,6 +44,7 @@
           <el-button type="primary">查询</el-button>
         </el-form-item>
       </el-form>
+      <el-button @click="getMyData">接口请求</el-button>
     </div>
   </div>
 </template>
@@ -50,6 +52,7 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import TextEditor from '@/components/TextEditor.vue'
 // import { getAliOCR } from '@/api/ocr'
 
 //字段定义
@@ -172,6 +175,18 @@ const getIdCard = (image) => {
       type: 'success'
     })
   })
+}
+
+const getMyData = () => {
+  let data = { name: '111' }
+  axios
+    .post('http://192.168.1.71:5000/add_user', data)
+    .then((res) => {
+      console.log('res===>', res)
+    })
+    .catch((err) => {
+      console.log('error===>', err)
+    })
 }
 
 const refreshIdApp = () => {
